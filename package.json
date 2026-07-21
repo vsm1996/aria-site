@@ -11,14 +11,14 @@
     "gen:rules": "node scripts/gen-rules.mjs"
   },
   "dependencies": {
-    "next": "15.1.6",
-    "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "next": "^16.2.11",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",
-    "@types/node": "22.10.5",
-    "@types/react": "19.0.7",
+    "@types/node": "^26.1.1",
+    "@types/react": "^19.2.17",
     "tailwindcss": "^4.3.3",
     "typescript": "5.7.3"
   }
