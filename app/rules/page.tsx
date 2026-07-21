@@ -13,43 +13,43 @@ function RuleCard({ rule }: { rule: Rule }) {
     <article
       aria-labelledby={`rule-${rule.id}`}
       className={`card overflow-hidden ${
-        isFormat ? 'border-[var(--color-known-line)]' : 'border-[var(--color-guess-line)]'
+        isFormat ? 'border-renge-success' : 'border-renge-warning'
       }`}
     >
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-inherit px-5 py-3">
-        <h3 id={`rule-${rule.id}`} className="mono text-sm font-semibold text-[var(--color-ink)]">
+      <div className="flex flex-wrap items-center justify-between gap-renge-3 border-b border-inherit px-renge-4 py-renge-3">
+        <h3 id={`rule-${rule.id}`} className="mono text-renge-sm font-semibold text-renge-fg">
           {rule.id}
         </h3>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-renge-2">
           <span
-            className={`rounded-full px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider ${
+            className={`rounded-renge-full px-renge-2 py-renge-1 text-renge-xs font-semibold uppercase tracking-wider ${
               isFormat
-                ? 'bg-[var(--color-known-soft)] text-[var(--color-known-ink)]'
-                : 'bg-[var(--color-guess-soft)] text-[var(--color-guess-ink)]'
+                ? 'bg-renge-success-subtle text-[var(--gate-known-ink)]'
+                : 'bg-renge-warning-subtle text-[var(--gate-guess-ink)]'
             }`}
           >
             {rule.tier}
           </span>
-          <span className="rounded-full bg-[var(--color-ink)] px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-[var(--color-paper)]">
+          <span className="rounded-renge-full bg-renge-bg-inverse px-renge-2 py-renge-1 text-renge-xs font-semibold uppercase tracking-wider text-renge-fg-inverse">
             {rule.status}
           </span>
         </div>
       </div>
-      <div className="space-y-3 px-5 py-4">
-        <p className="text-sm leading-relaxed text-[var(--color-ink-2)]">{rule.summary}</p>
-        <p className="text-sm leading-relaxed text-[var(--color-muted)]">{rule.note}</p>
-        <dl className="space-y-1.5 border-t border-[var(--color-line)] pt-3 text-xs">
-          <div className="flex gap-2">
-            <dt className="w-14 shrink-0 font-semibold uppercase tracking-wider text-[var(--color-muted)]">
+      <div className="space-y-renge-3 px-renge-4 py-renge-3">
+        <p className="text-renge-sm leading-relaxed text-renge-fg-muted">{rule.summary}</p>
+        <p className="text-renge-sm leading-relaxed text-renge-fg-subtle">{rule.note}</p>
+        <dl className="space-y-renge-1 border-t border-renge-border-subtle pt-renge-3 text-renge-xs">
+          <div className="flex gap-renge-2">
+            <dt className="w-14 shrink-0 font-semibold uppercase tracking-wider text-renge-fg-subtle">
               Basis
             </dt>
-            <dd className="mono text-[var(--color-ink-2)]">{rule.basis}</dd>
+            <dd className="mono text-renge-fg-muted">{rule.basis}</dd>
           </div>
-          <div className="flex gap-2">
-            <dt className="w-14 shrink-0 font-semibold uppercase tracking-wider text-[var(--color-muted)]">
+          <div className="flex gap-renge-2">
+            <dt className="w-14 shrink-0 font-semibold uppercase tracking-wider text-renge-fg-subtle">
               Spec
             </dt>
-            <dd className="leading-relaxed text-[var(--color-ink-2)]">{rule.spec}</dd>
+            <dd className="leading-relaxed text-renge-fg-muted">{rule.spec}</dd>
           </div>
         </dl>
       </div>
@@ -59,14 +59,14 @@ function RuleCard({ rule }: { rule: Rule }) {
 
 export default function RulesPage() {
   return (
-    <div className="container-tight py-16 sm:py-20">
+    <div className="container-tight py-renge-6 sm:py-renge-7">
       <p className="eyebrow">Rules reference</p>
-      <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+      <h1 className="mt-renge-3 text-renge-xl font-semibold leading-[1.08] tracking-tight">
         Eight rules. Every one cited, tested, and CI-gated.
       </h1>
-      <p className="prose-measure mt-4 text-base leading-relaxed text-[var(--color-ink-2)]">
+      <p className="prose-measure mt-renge-4 text-renge-base leading-relaxed text-renge-fg-muted">
         This page mirrors the repo’s{' '}
-        <a href={REGISTRY_URL} className="underline underline-offset-4 hover:text-[var(--color-ink)]">
+        <a href={REGISTRY_URL} className="underline underline-offset-4 hover:text-renge-fg">
           rule registry
         </a>{' '}
         — the file a reviewer reads to learn a rule’s tier, basis, and spec citation without
@@ -74,28 +74,28 @@ export default function RulesPage() {
         shipped there that isn’t tested and CI-gated in the repo.
       </p>
 
-      <section aria-labelledby="format-heading" className="mt-12">
-        <h2 id="format-heading" className="text-xl font-semibold tracking-tight">
+      <section aria-labelledby="format-heading" className="mt-renge-6">
+        <h2 id="format-heading" className="text-renge-lg font-semibold tracking-tight">
           Format tier{' '}
-          <span className="text-sm font-normal text-[var(--color-muted)]">
+          <span className="text-renge-sm font-normal text-renge-fg-subtle">
             — basis native | declared. Auto-applied on save / --fix. Never add asserted values.
           </span>
         </h2>
-        <div className="mt-5 grid gap-4">
+        <div className="mt-renge-4 grid gap-renge-4">
           {formatRules.map((r) => (
             <RuleCard key={r.id} rule={r} />
           ))}
         </div>
       </section>
 
-      <section aria-labelledby="lint-heading" className="mt-12">
-        <h2 id="lint-heading" className="text-xl font-semibold tracking-tight">
+      <section aria-labelledby="lint-heading" className="mt-renge-6">
+        <h2 id="lint-heading" className="text-renge-lg font-semibold tracking-tight">
           Lint tier{' '}
-          <span className="text-sm font-normal text-[var(--color-muted)]">
+          <span className="text-renge-sm font-normal text-renge-fg-subtle">
             — located diagnostics, human-reviewed, never auto-applied.
           </span>
         </h2>
-        <p className="prose-measure mt-3 text-sm leading-relaxed text-[var(--color-muted)]">
+        <p className="prose-measure mt-renge-3 text-renge-sm leading-relaxed text-renge-fg-subtle">
           Most carry <span className="mono">inferred</span> basis. Several are the interesting
           exception: a <span className="mono">native</span> fact that is still lint-tier — because
           the finding is advisory (idref-resolves), because only a human can author the repair
@@ -103,28 +103,28 @@ export default function RulesPage() {
           refuses to pick (aria-hidden-not-focusable). Basis and tier deliberately diverge, and the
           registry documents each reason.
         </p>
-        <div className="mt-5 grid gap-4">
+        <div className="mt-renge-4 grid gap-renge-4">
           {lintRules.map((r) => (
             <RuleCard key={r.id} rule={r} />
           ))}
         </div>
       </section>
 
-      <section aria-labelledby="watch-heading" className="mt-12">
-        <h2 id="watch-heading" className="text-xl font-semibold tracking-tight">
+      <section aria-labelledby="watch-heading" className="mt-renge-6">
+        <h2 id="watch-heading" className="text-renge-lg font-semibold tracking-tight">
           Watch queue{' '}
-          <span className="text-sm font-normal text-[var(--color-muted)]">
+          <span className="text-renge-sm font-normal text-renge-fg-subtle">
             — roadmap, awaiting host platform support. Not shipped.
           </span>
         </h2>
-        <ul className="mt-4 space-y-2 text-sm leading-relaxed text-[var(--color-ink-2)]">
+        <ul className="mt-renge-4 space-y-renge-2 text-renge-sm leading-relaxed text-renge-fg-muted">
           <li>Vue SFC template rules — blocked on the oxlint Vue parser (in progress upstream).</li>
           <li>Svelte component rules — blocked on an oxlint Svelte parser (not started).</li>
           <li>HTML template rules — blocked on oxlint / parse5 integration (not started).</li>
         </ul>
       </section>
 
-      <p className="mt-12 border-t border-[var(--color-line)] pt-6 text-xs leading-relaxed text-[var(--color-muted)]">
+      <p className="mt-renge-6 border-t border-renge-border-subtle pt-renge-4 text-renge-xs leading-relaxed text-renge-fg-subtle">
         This page is generated from a structured snapshot of the registry (see{' '}
         <span className="mono">data/rules.ts</span> in the site repo), checked against the live
         registry by a drift script. If the registry and this page ever disagree, the registry wins.

@@ -1,38 +1,27 @@
 @import 'tailwindcss';
+@plugin '@renge-ui/tailwind/plugin';
 
 /*
-  Aria site design system.
-  Two semantic colors carry meaning everywhere, mirroring the gate:
-    known  (green)  = native | declared -> format tier -> auto-fix, runs on save
-    guess  (amber)  = inferred          -> lint tier   -> suggestion, human approves
+  Aria site on the Renge design system (@renge-ui/tailwind v4 plugin):
+  Fibonacci spacing (--renge-space-*), φ typography (--renge-font-size-*),
+  radius, duration/easing, and the 22 semantic colors — profile "ocean",
+  mode pinned to light (dark is a deliberate follow-up, not shipped unaudited).
+
+  THE GATE COLORS (do not blur these):
+  The site's two functional colors carry the same meaning as Aria's gate —
+    known (native/declared basis → auto-fix)   = Renge `success`
+    guess (inferred basis → suggestion only)   = Renge `warning`
+  This is Path 1: Renge's own semantic status tokens preserve the safe/guess
+  split (green hue 130 vs amber hue 40 — 90° apart in OKLCH, immediately
+  legible). The two --gate-*-ink shades below are the one thin derivation:
+  darker text tones hue-locked to those same tokens, needed for AA contrast
+  on the -subtle fills (warning at 62% L is not readable as small text on a
+  92% L background; these are).
 */
-@theme {
-  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
-    sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', 'Menlo', 'Consolas', monospace;
-
-  --color-paper: #f8f7f3;
-  --color-paper-2: #f1efe8;
-  --color-ink: #16171c;
-  --color-ink-2: #3b3d46;
-  --color-muted: #6c6e79;
-  --color-line: #e4e1d8;
-  --color-line-2: #d7d3c7;
-
-  --color-known: #16805a;
-  --color-known-ink: #0c4b35;
-  --color-known-soft: #e5f2ec;
-  --color-known-line: #bfe0d1;
-
-  --color-guess: #a8620d;
-  --color-guess-ink: #6d3f07;
-  --color-guess-soft: #f7ecdd;
-  --color-guess-line: #e6cfa9;
-
-  --color-accent: #16805a;
-}
-
 :root {
+  --gate-known-ink: oklch(34% 0.11 130); /* derived from --renge-color-success (hue 130) */
+  --gate-guess-ink: oklch(38% 0.12 40); /* derived from --renge-color-warning (hue 40) */
+  --font-mono-stack: 'JetBrains Mono', ui-monospace, 'SF Mono', 'Menlo', 'Consolas', monospace;
   color-scheme: light;
 }
 
@@ -42,26 +31,26 @@ html {
 }
 
 body {
-  background: var(--color-paper);
-  color: var(--color-ink);
-  font-family: var(--font-sans);
+  background: var(--renge-color-bg);
+  color: var(--renge-color-fg);
   font-feature-settings: 'cv05', 'ss01';
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background: #16805a22;
+  background: var(--renge-color-accent-subtle);
 }
 
-/* A visible, generous focus ring — this is an accessibility site; it must look the part. */
+/* A visible, generous focus ring — this is an accessibility site; it must
+   look the part. Uses Renge's dedicated focus token. */
 a:focus-visible,
 button:focus-visible,
 [tabindex]:focus-visible,
 summary:focus-visible {
-  outline: 2px solid var(--color-known);
+  outline: 2px solid var(--renge-color-border-focus);
   outline-offset: 3px;
-  border-radius: 3px;
+  border-radius: var(--renge-radius-1);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -76,27 +65,24 @@ summary:focus-visible {
   }
 }
 
-/* Utilities layered on Tailwind. */
+/* Utilities layered on Tailwind + Renge tokens. */
 @layer components {
   .container-tight {
-    @apply mx-auto w-full max-w-5xl px-6;
+    @apply mx-auto w-full max-w-5xl px-renge-4;
   }
   .container-wide {
-    @apply mx-auto w-full max-w-6xl px-6;
+    @apply mx-auto w-full max-w-6xl px-renge-4;
   }
   .eyebrow {
-    @apply text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-muted)];
+    @apply text-renge-xs font-semibold uppercase tracking-[0.16em] text-renge-fg-subtle;
   }
   .prose-measure {
     max-width: 62ch;
   }
-  .hairline {
-    @apply border-[var(--color-line)];
-  }
   .card {
-    @apply rounded-xl border border-[var(--color-line)] bg-white/60;
+    @apply rounded-renge-3 border border-renge-border-subtle bg-renge-bg-subtle;
   }
   .mono {
-    font-family: var(--font-mono);
+    font-family: var(--font-mono-stack);
   }
 }

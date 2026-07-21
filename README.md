@@ -22,3 +22,22 @@ docs/rule-registry.md — nothing invented or approximated:
 npm install
 npm run dev
 ```
+
+## Design system
+
+Styled with [Renge](https://www.npmjs.com/package/@renge-ui/tokens) via the
+`@renge-ui/tailwind` v4 plugin — Fibonacci spacing, φ typography, radius and
+motion tokens, profile `ocean` (light mode pinned; dark is a follow-up).
+
+The two gate colors are Renge's own semantic status tokens: **known**
+(native/declared → auto-fix) maps to `--renge-color-success`, **guess**
+(inferred → suggestion) maps to `--renge-color-warning` — a 90° OKLCH hue
+separation that keeps the safe/guess distinction legible. Two site-local ink
+shades (`--gate-known-ink`, `--gate-guess-ink`) are hue-locked to those tokens
+for AA text contrast on the `-subtle` fills; see `app/globals.css`.
+
+`@renge-ui/react` components are deliberately not used: the package ships no
+`use client` boundaries and creates context at module scope, so it cannot be
+imported into this site's server components without converting pages to client
+components — which would add client JS to a fully static site and re-open the
+verified accessibility surface. Tokens and utilities only.

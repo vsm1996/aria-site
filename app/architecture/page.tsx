@@ -27,22 +27,22 @@ export default defineConfig({
 
 export default function ArchitecturePage() {
   return (
-    <div className="container-tight py-16 sm:py-20">
+    <div className="container-tight py-renge-6 sm:py-renge-7">
       <p className="eyebrow">Architecture</p>
-      <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+      <h1 className="mt-renge-3 text-renge-xl font-semibold leading-[1.08] tracking-tight">
         One hard line, and finding it is the entire design.
       </h1>
 
       {/* The point */}
-      <section aria-labelledby="point" className="mt-10">
-        <h2 id="point" className="text-xl font-semibold tracking-tight">
+      <section aria-labelledby="point" className="mt-renge-5">
+        <h2 id="point" className="text-renge-lg font-semibold tracking-tight">
           Why a formatter
         </h2>
-        <div className="prose-measure mt-4 space-y-4 text-base leading-relaxed text-[var(--color-ink-2)]">
+        <div className="prose-measure mt-renge-4 space-y-renge-4 text-renge-base leading-relaxed text-renge-fg-muted">
           <p>
             Code formatters won. Not because they made code prettier, but because they made a class
             of argument extinct. Nobody debates brace style anymore because{' '}
-            <span className="mono text-sm">prettier --check</span> turns the debate into a failing
+            <span className="mono text-renge-sm">prettier --check</span> turns the debate into a failing
             build. The discipline that made that possible is a single contract:{' '}
             <strong>a formatter never changes what the code means.</strong> Output is equivalent by
             construction. That is the only reason a human stopped reading the diff.
@@ -55,9 +55,9 @@ export default function ArchitecturePage() {
           </p>
           <p>
             The catch is that accessibility breaks the formatter contract the instant you guess.
-            Put <span className="mono text-sm">role=&quot;button&quot;</span> on a{' '}
-            <span className="mono text-sm">div</span> and you changed behavior. Author{' '}
-            <span className="mono text-sm">aria-label=&quot;Close&quot;</span> and you asserted a
+            Put <span className="mono text-renge-sm">role=&quot;button&quot;</span> on a{' '}
+            <span className="mono text-renge-sm">div</span> and you changed behavior. Author{' '}
+            <span className="mono text-renge-sm">aria-label=&quot;Close&quot;</span> and you asserted a
             fact that might be a lie — and the spec is explicit that a wrong label is worse than
             none.
           </p>
@@ -65,27 +65,27 @@ export default function ArchitecturePage() {
       </section>
 
       {/* The invariant */}
-      <section aria-labelledby="invariant" className="mt-14">
-        <h2 id="invariant" className="text-xl font-semibold tracking-tight">
+      <section aria-labelledby="invariant" className="mt-renge-6">
+        <h2 id="invariant" className="text-renge-lg font-semibold tracking-tight">
           The central invariant
         </h2>
-        <p className="prose-measure mt-4 text-base leading-relaxed text-[var(--color-ink-2)]">
+        <p className="prose-measure mt-renge-4 text-renge-base leading-relaxed text-renge-fg-muted">
           Aria classifies every accessibility fact by where its semantics came from, and every rule
           belongs to exactly one tier:
         </p>
-        <div className="mt-5 grid gap-4 md:grid-cols-2">
+        <div className="mt-renge-4 grid gap-renge-4 md:grid-cols-2">
           <CodeBlock label="the basis taxonomy" code={SEMANTIC_SOURCE} />
           <CodeBlock label="the two tiers" code={TIER} />
         </div>
-        <blockquote className="mt-6 rounded-lg border-l-4 border-[var(--color-ink)] bg-white/70 px-6 py-4">
-          <p className="text-base font-medium leading-relaxed text-[var(--color-ink)]">
+        <blockquote className="mt-renge-4 rounded-renge-2 border-l-4 border-renge-fg bg-renge-bg-subtle px-renge-4 py-renge-3">
+          <p className="text-renge-base font-medium leading-relaxed text-renge-fg">
             A fix may run in the format tier only if its semantic basis is{' '}
-            <span className="mono text-sm">native</span> or{' '}
-            <span className="mono text-sm">declared</span>. Any fix whose basis is{' '}
-            <span className="mono text-sm">inferred</span> is lint tier and is never auto-applied.
+            <span className="mono text-renge-sm">native</span> or{' '}
+            <span className="mono text-renge-sm">declared</span>. Any fix whose basis is{' '}
+            <span className="mono text-renge-sm">inferred</span> is lint tier and is never auto-applied.
           </p>
         </blockquote>
-        <p className="prose-measure mt-4 text-base leading-relaxed text-[var(--color-ink-2)]">
+        <p className="prose-measure mt-renge-4 text-renge-base leading-relaxed text-renge-fg-muted">
           The formatter acts only on semantics it <em>knows</em> — real HTML, or declared via
           config. It never acts on semantics it <em>guessed</em>. A format-tier fix must
           additionally satisfy meaning-preservation: for every possible runtime, the computed
@@ -97,31 +97,31 @@ export default function ArchitecturePage() {
       </section>
 
       {/* Enforcement */}
-      <section aria-labelledby="enforcement" className="mt-14">
-        <h2 id="enforcement" className="text-xl font-semibold tracking-tight">
+      <section aria-labelledby="enforcement" className="mt-renge-6">
+        <h2 id="enforcement" className="text-renge-lg font-semibold tracking-tight">
           Enforced three times, not promised once
         </h2>
-        <div className="mt-5 grid gap-4 md:grid-cols-3">
-          <div className="card p-5">
-            <p className="mono text-sm font-semibold">1 · in code</p>
-            <p className="mt-2 text-sm leading-relaxed text-[var(--color-ink-2)]">
+        <div className="mt-renge-4 grid gap-renge-4 md:grid-cols-3">
+          <div className="card p-renge-4">
+            <p className="mono text-renge-sm font-semibold">1 · in code</p>
+            <p className="mt-renge-2 text-renge-sm leading-relaxed text-renge-fg-muted">
               Rules never choose their fix kind. They declare a basis, and{' '}
               <span className="mono">@aria/core</span>’s policy derives the kind;{' '}
               <span className="mono">assertGate</span> throws on any inferred + auto-fix pairing.
               An inferred auto-fix is structurally impossible to emit, not merely discouraged.
             </p>
           </div>
-          <div className="card p-5">
-            <p className="mono text-sm font-semibold">2 · by the host</p>
-            <p className="mt-2 text-sm leading-relaxed text-[var(--color-ink-2)]">
+          <div className="card p-renge-4">
+            <p className="mono text-renge-sm font-semibold">2 · by the host</p>
+            <p className="mt-renge-2 text-renge-sm leading-relaxed text-renge-fg-muted">
               ESLint and oxlint already distinguish an auto-applied <span className="mono">fix</span>{' '}
               from a surfaced <span className="mono">suggestion</span>. The gate maps onto that
               model, so the host’s own machinery guarantees inferred fixes never land on save.
             </p>
           </div>
-          <div className="card p-5">
-            <p className="mono text-sm font-semibold">3 · by tests</p>
-            <p className="mt-2 text-sm leading-relaxed text-[var(--color-ink-2)]">
+          <div className="card p-renge-4">
+            <p className="mono text-renge-sm font-semibold">3 · by tests</p>
+            <p className="mt-renge-2 text-renge-sm leading-relaxed text-renge-fg-muted">
               A property suite asserts no inferred-basis diagnostic ever carries an applied fix,
               and an ESLint ↔ oxlint parity harness re-verifies every fixture on both hosts on
               every commit — a required CI check, currently zero drift.
@@ -131,45 +131,45 @@ export default function ArchitecturePage() {
       </section>
 
       {/* Basis ≠ tier */}
-      <section aria-labelledby="taxonomy" className="mt-14">
-        <h2 id="taxonomy" className="text-xl font-semibold tracking-tight">
+      <section aria-labelledby="taxonomy" className="mt-renge-6">
+        <h2 id="taxonomy" className="text-renge-lg font-semibold tracking-tight">
           Basis and tier can deliberately diverge
         </h2>
-        <p className="prose-measure mt-4 text-base leading-relaxed text-[var(--color-ink-2)]">
+        <p className="prose-measure mt-renge-4 text-renge-base leading-relaxed text-renge-fg-muted">
           The gate says what may be <em>auto-applied</em>; it doesn’t force every provable fact to
-          become an auto-fix. Several shipped rules detect a <span className="mono text-sm">native</span>{' '}
+          become an auto-fix. Several shipped rules detect a <span className="mono text-renge-sm">native</span>{' '}
           fact yet stay lint-tier, for three distinct, documented reasons:
         </p>
-        <dl className="mt-5 space-y-4">
-          <div className="card p-5">
-            <dt className="text-sm font-semibold">
-              Uncertain-if-broken <span className="mono font-normal text-[var(--color-muted)]">— idref-resolves</span>
+        <dl className="mt-renge-4 space-y-renge-4">
+          <div className="card p-renge-4">
+            <dt className="text-renge-sm font-semibold">
+              Uncertain-if-broken <span className="mono font-normal text-renge-fg-subtle">— idref-resolves</span>
             </dt>
-            <dd className="mt-1.5 text-sm leading-relaxed text-[var(--color-ink-2)]">
+            <dd className="mt-renge-1 text-renge-sm leading-relaxed text-renge-fg-muted">
               “Not found in this file” is a fact, but not conclusively a bug — an id can
               legitimately live in another file or be injected at runtime. Advisory, never
               CI-failing: a false positive on correct code is the one thing the format tier may
               never produce.
             </dd>
           </div>
-          <div className="card p-5">
-            <dt className="text-sm font-semibold">
+          <div className="card p-renge-4">
+            <dt className="text-renge-sm font-semibold">
               Unfixable-by-machine{' '}
-              <span className="mono font-normal text-[var(--color-muted)]">
+              <span className="mono font-normal text-renge-fg-subtle">
                 — img-needs-alt, control-needs-name
               </span>
             </dt>
-            <dd className="mt-1.5 text-sm leading-relaxed text-[var(--color-ink-2)]">
+            <dd className="mt-renge-1 text-renge-sm leading-relaxed text-renge-fg-muted">
               A nameless image or control is certainly broken, but the only repair is authoring
               content — a hard non-goal. Aria flags the gap and leaves the words to a human.
             </dd>
           </div>
-          <div className="card p-5">
-            <dt className="text-sm font-semibold">
+          <div className="card p-renge-4">
+            <dt className="text-renge-sm font-semibold">
               Refuses-to-pick{' '}
-              <span className="mono font-normal text-[var(--color-muted)]">— aria-hidden-not-focusable</span>
+              <span className="mono font-normal text-renge-fg-subtle">— aria-hidden-not-focusable</span>
             </dt>
-            <dd className="mt-1.5 text-sm leading-relaxed text-[var(--color-ink-2)]">
+            <dd className="mt-renge-1 text-renge-sm leading-relaxed text-renge-fg-muted">
               A mechanical fix exists (<span className="mono">tabindex=&quot;-1&quot;</span>), but
               which repair is right depends on intent the tool can’t see — applying the wrong one
               would make things strictly worse. The rule names the options and declines to choose.
@@ -179,20 +179,20 @@ export default function ArchitecturePage() {
       </section>
 
       {/* The bridge */}
-      <section aria-labelledby="bridge" className="mt-14">
-        <h2 id="bridge" className="text-xl font-semibold tracking-tight">
+      <section aria-labelledby="bridge" className="mt-renge-6">
+        <h2 id="bridge" className="text-renge-lg font-semibold tracking-tight">
           The line moves: the config bridge
         </h2>
-        <div className="mt-5 grid items-start gap-6 md:grid-cols-2">
-          <div className="prose-measure space-y-4 text-base leading-relaxed text-[var(--color-ink-2)]">
+        <div className="mt-renge-4 grid items-start gap-renge-4 md:grid-cols-2">
+          <div className="prose-measure space-y-renge-4 text-renge-base leading-relaxed text-renge-fg-muted">
             <p>
               The boundary between guess and known isn’t fixed — config is the lever. When a design
-              system declares that <span className="mono text-sm">IconButton</span> is a button,
+              system declares that <span className="mono text-renge-sm">IconButton</span> is a button,
               the engine stops guessing: the same diagnostic that was an inferred-basis suggestion
-              becomes a <span className="mono text-sm">declared</span>-basis auto-fix. Proven by a
+              becomes a <span className="mono text-renge-sm">declared</span>-basis auto-fix. Proven by a
               named end-to-end test in the repo, not asserted.
             </p>
-            <p className="text-sm text-[var(--color-muted)]">
+            <p className="text-renge-sm text-renge-fg-subtle">
               Declared basis doesn’t force a fix, either — a declared image component missing its
               name prop is still report-only, because Aria still can’t author the name. Known
               semantics, honest limits.
@@ -202,19 +202,19 @@ export default function ArchitecturePage() {
         </div>
       </section>
 
-      <p className="mt-14 border-t border-[var(--color-line)] pt-6 text-sm leading-relaxed text-[var(--color-muted)]">
+      <p className="mt-renge-6 border-t border-renge-border-subtle pt-renge-4 text-renge-sm leading-relaxed text-renge-fg-subtle">
         The full spec — the working agreement, the gate, the implementation plan, and every
         documented judgment call — lives in the repo:{' '}
         <a
           href="https://github.com/vsm1996/aria/blob/main/CLAUDE.md"
-          className="underline underline-offset-4 hover:text-[var(--color-ink)]"
+          className="underline underline-offset-4 hover:text-renge-fg"
         >
           CLAUDE.md
         </a>{' '}
         and{' '}
         <a
           href="https://github.com/vsm1996/aria/blob/main/docs/rule-registry.md"
-          className="underline underline-offset-4 hover:text-[var(--color-ink)]"
+          className="underline underline-offset-4 hover:text-renge-fg"
         >
           docs/rule-registry.md
         </a>

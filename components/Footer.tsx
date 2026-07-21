@@ -22,37 +22,37 @@ const cols: { title: string; links: { href: string; label: string; ext?: boolean
 
 export function Footer() {
   return (
-    <footer className="mt-24 border-t border-[var(--color-line)]">
-      <div className="container-wide grid grid-cols-2 gap-8 py-14 sm:grid-cols-4">
+    <footer className="mt-renge-7 border-t border-renge-border-subtle">
+      <div className="container-wide grid grid-cols-2 gap-renge-5 py-renge-6 sm:grid-cols-4">
         <div className="col-span-2">
-          <div className="text-lg font-semibold tracking-tight">Aria</div>
-          <p className="prose-measure mt-2 text-sm leading-relaxed text-[var(--color-muted)]">
+          <div className="text-renge-base font-semibold tracking-tight">Aria</div>
+          <p className="prose-measure mt-renge-2 text-renge-sm leading-relaxed text-renge-fg-subtle">
             An accessibility formatter that holds itself to the one contract that made code
             formatters non-optional: it never changes what the code means.
           </p>
           {/* Verified: `npm run lint:a11y` (the published CLI) reports zero findings
               across this site's own app/ and components/. */}
-          <p className="mt-4 inline-flex items-center gap-2 rounded-full border border-[var(--color-known-line)] bg-[var(--color-known-soft)] px-3 py-1 text-xs font-medium text-[var(--color-known-ink)]">
+          <p className="mt-renge-4 inline-flex items-center gap-renge-2 rounded-renge-full border border-renge-success bg-renge-success-subtle px-renge-3 py-1 text-renge-xs font-medium text-[var(--gate-known-ink)]">
             <span aria-hidden="true">✓</span> This site is checked by Aria — zero findings
           </p>
         </div>
         {cols.map((col) => (
           <nav key={col.title} aria-label={col.title}>
             <h2 className="eyebrow">{col.title}</h2>
-            <ul className="mt-3 space-y-2 text-sm">
+            <ul className="mt-renge-3 space-y-renge-2 text-renge-sm">
               {col.links.map((l) => (
                 <li key={l.href}>
                   {l.ext ? (
                     <a
                       href={l.href}
-                      className="text-[var(--color-ink-2)] underline-offset-4 hover:text-[var(--color-ink)] hover:underline"
+                      className="text-renge-fg-muted underline-offset-4 hover:text-renge-fg hover:underline"
                     >
                       {l.label}
                     </a>
                   ) : (
                     <Link
                       href={l.href}
-                      className="text-[var(--color-ink-2)] underline-offset-4 hover:text-[var(--color-ink)] hover:underline"
+                      className="text-renge-fg-muted underline-offset-4 hover:text-renge-fg hover:underline"
                     >
                       {l.label}
                     </Link>
@@ -63,7 +63,7 @@ export function Footer() {
           </nav>
         ))}
       </div>
-      <div className="container-wide flex flex-col gap-1 border-t border-[var(--color-line)] py-6 text-xs text-[var(--color-muted)] sm:flex-row sm:items-center sm:justify-between">
+      <div className="container-wide flex flex-col gap-renge-1 border-t border-renge-border-subtle py-renge-4 text-renge-xs text-renge-fg-subtle sm:flex-row sm:items-center sm:justify-between">
         <span>MIT licensed. Built by Soka Labs.</span>
         <span>Content sourced from the repo — nothing claimed that isn’t shipped.</span>
       </div>

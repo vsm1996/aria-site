@@ -9,26 +9,26 @@ const links = [
 
 export function Nav() {
   return (
-    <header className="sticky top-0 z-40 border-b border-[var(--color-line)] bg-[var(--color-paper)]/85 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-renge-border-subtle bg-renge-bg backdrop-blur">
       <nav
-        className="container-wide flex h-16 items-center justify-between gap-6"
+        className="container-wide flex h-renge-6 items-center justify-between gap-renge-4"
         aria-label="Primary"
       >
-        <Link href="/" className="group flex items-baseline gap-2.5">
-          <span className="text-lg font-semibold tracking-tight text-[var(--color-ink)]">
+        <Link href="/" className="group flex items-baseline gap-renge-2">
+          <span className="text-renge-base font-semibold tracking-tight text-renge-fg">
             Aria
           </span>
-          <span className="hidden text-xs text-[var(--color-muted)] sm:inline">
+          <span className="hidden text-renge-xs text-renge-fg-subtle sm:inline">
             the accessibility formatter
           </span>
         </Link>
-        <div className="flex items-center gap-1 sm:gap-2">
-          <ul className="hidden items-center gap-1 sm:flex">
+        <div className="flex items-center gap-renge-1 sm:gap-renge-2">
+          <ul className="hidden items-center gap-renge-1 sm:flex">
             {links.map((l) => (
               <li key={l.href}>
                 <Link
                   href={l.href}
-                  className="rounded-md px-3 py-2 text-sm text-[var(--color-ink-2)] transition-colors hover:bg-[var(--color-paper-2)] hover:text-[var(--color-ink)]"
+                  className="rounded-renge-1 px-renge-3 py-renge-2 text-renge-sm text-renge-fg-muted transition-colors duration-renge-2 ease-renge-ease-out hover:bg-renge-bg-subtle hover:text-renge-fg"
                 >
                   {l.label}
                 </Link>
@@ -37,7 +37,7 @@ export function Nav() {
           </ul>
           <a
             href="https://github.com/vsm1996/aria"
-            className="rounded-md border border-[var(--color-line-2)] px-3 py-1.5 text-sm font-medium text-[var(--color-ink)] transition-colors hover:bg-[var(--color-ink)] hover:text-[var(--color-paper)]"
+            className="rounded-renge-1 border border-renge-border px-renge-3 py-renge-1 text-renge-sm font-medium text-renge-fg transition-colors duration-renge-2 ease-renge-ease-out hover:bg-renge-bg-inverse hover:text-renge-fg-inverse"
           >
             GitHub
           </a>

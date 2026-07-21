@@ -21,11 +21,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    // Renge profile "ocean", mode pinned to light — dark is a deliberate
+    // follow-up (contrast on the gate inks is only audited for light).
+    <html lang="en" data-profile="ocean" data-mode="light">
       <body className="flex min-h-screen flex-col">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-[var(--color-ink)] focus:px-4 focus:py-2 focus:text-sm focus:text-[var(--color-paper)]"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-renge-1 focus:bg-renge-bg-inverse focus:px-renge-3 focus:py-renge-2 focus:text-renge-sm focus:text-renge-fg-inverse"
         >
           Skip to content
         </a>

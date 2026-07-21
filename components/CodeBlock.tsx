@@ -9,20 +9,20 @@ export function CodeBlock({
 }) {
   const toneClasses =
     tone === 'known'
-      ? 'border-[var(--color-known-line)] bg-[var(--color-known-soft)]/50'
+      ? 'border-renge-success bg-renge-success-subtle'
       : tone === 'guess'
-        ? 'border-[var(--color-guess-line)] bg-[var(--color-guess-soft)]/50'
-        : 'border-[var(--color-line)] bg-white/70';
+        ? 'border-renge-warning bg-renge-warning-subtle'
+        : 'border-renge-border-subtle bg-renge-bg-subtle';
 
   return (
-    <figure className={`overflow-hidden rounded-lg border ${toneClasses}`}>
+    <figure className={`overflow-hidden rounded-renge-2 border ${toneClasses}`}>
       {label ? (
-        <figcaption className="border-b border-inherit px-4 py-2 text-xs font-medium text-[var(--color-muted)]">
+        <figcaption className="border-b border-inherit px-renge-3 py-renge-2 text-renge-xs font-medium text-renge-fg-subtle">
           {label}
         </figcaption>
       ) : null}
-      <pre className="overflow-x-auto px-4 py-3 text-[13px] leading-relaxed">
-        <code className="mono text-[var(--color-ink)]">{code}</code>
+      <pre className="overflow-x-auto px-renge-3 py-renge-3 text-renge-xs leading-relaxed">
+        <code className="mono text-renge-fg">{code}</code>
       </pre>
     </figure>
   );

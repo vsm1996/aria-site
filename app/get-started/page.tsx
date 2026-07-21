@@ -31,38 +31,38 @@ export default defineConfig({
 
 export default function GetStartedPage() {
   return (
-    <div className="container-tight py-16 sm:py-20">
+    <div className="container-tight py-renge-6 sm:py-renge-7">
       <p className="eyebrow">Get started</p>
-      <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+      <h1 className="mt-renge-3 text-renge-xl font-semibold leading-[1.08] tracking-tight">
         Two surfaces, one rule set.
       </h1>
-      <p className="prose-measure mt-4 text-base leading-relaxed text-[var(--color-ink-2)]">
-        Both packages are live on npm at <span className="mono text-sm">0.1.1</span>. The plugin
+      <p className="prose-measure mt-renge-4 text-renge-base leading-relaxed text-renge-fg-muted">
+        Both packages are live on npm at <span className="mono text-renge-sm">0.1.1</span>. The plugin
         and the CLI run the exact same rule modules — output is identical by construction, and a
         parity test in the repo asserts it.
       </p>
 
       {/* Plugin */}
-      <section aria-labelledby="plugin" className="mt-12">
-        <h2 id="plugin" className="text-xl font-semibold tracking-tight">
+      <section aria-labelledby="plugin" className="mt-renge-6">
+        <h2 id="plugin" className="text-renge-lg font-semibold tracking-tight">
           The ESLint plugin
         </h2>
-        <p className="prose-measure mt-3 text-base leading-relaxed text-[var(--color-ink-2)]">
+        <p className="prose-measure mt-renge-3 text-renge-base leading-relaxed text-renge-fg-muted">
           A standard flat-config plugin. It also runs under oxlint via{' '}
-          <span className="mono text-sm">jsPlugins</span>, unchanged — the aria repo’s own{' '}
+          <span className="mono text-renge-sm">jsPlugins</span>, unchanged — the aria repo’s own{' '}
           <a
             href="https://github.com/vsm1996/aria/blob/main/.oxlintrc.json"
-            className="underline underline-offset-4 hover:text-[var(--color-ink)]"
+            className="underline underline-offset-4 hover:text-renge-fg"
           >
             .oxlintrc.json
           </a>{' '}
           is a working example.
         </p>
-        <div className="mt-5 space-y-4">
+        <div className="mt-renge-4 space-y-renge-4">
           <CodeBlock label="install" code={INSTALL_PLUGIN} />
           <CodeBlock label="eslint.config.js" code={FLAT_CONFIG} />
         </div>
-        <p className="mt-4 text-sm leading-relaxed text-[var(--color-muted)]">
+        <p className="mt-renge-4 text-renge-sm leading-relaxed text-renge-fg-subtle">
           The recommended config sets the three format-tier rules to{' '}
           <span className="mono">error</span> — that’s the CI gate — and the five lint-tier rules
           to <span className="mono">warn</span>.
@@ -70,18 +70,18 @@ export default function GetStartedPage() {
       </section>
 
       {/* CLI */}
-      <section aria-labelledby="cli" className="mt-12">
-        <h2 id="cli" className="text-xl font-semibold tracking-tight">
+      <section aria-labelledby="cli" className="mt-renge-6">
+        <h2 id="cli" className="text-renge-lg font-semibold tracking-tight">
           The zero-config CLI
         </h2>
-        <p className="prose-measure mt-3 text-base leading-relaxed text-[var(--color-ink-2)]">
+        <p className="prose-measure mt-renge-3 text-renge-base leading-relaxed text-renge-fg-muted">
           No ESLint config file, no host setup — point it at files or directories and it works,
           parsing .jsx/.tsx (and plain JS) out of the box.
         </p>
-        <div className="mt-5">
+        <div className="mt-renge-4">
           <CodeBlock label="usage" code={CLI_USAGE} />
         </div>
-        <p className="prose-measure mt-4 text-sm leading-relaxed text-[var(--color-muted)]">
+        <p className="prose-measure mt-renge-4 text-renge-sm leading-relaxed text-renge-fg-subtle">
           Under the hood the CLI wraps ESLint’s Linter programmatically with a Babel→ESTree parser
           — so eslint is a real internal dependency. That’s an implementation detail, not something
           you configure. “Standalone” means no ESLint config and no host — not a claim of zero
@@ -90,28 +90,28 @@ export default function GetStartedPage() {
       </section>
 
       {/* Config bridge */}
-      <section aria-labelledby="config" className="mt-12">
-        <h2 id="config" className="text-xl font-semibold tracking-tight">
+      <section aria-labelledby="config" className="mt-renge-6">
+        <h2 id="config" className="text-renge-lg font-semibold tracking-tight">
           Optional: declare your design system
         </h2>
-        <p className="prose-measure mt-3 text-base leading-relaxed text-[var(--color-ink-2)]">
-          Both surfaces pick up an <span className="mono text-sm">aria.config.&#123;ts,js,json&#125;</span>{' '}
+        <p className="prose-measure mt-renge-3 text-renge-base leading-relaxed text-renge-fg-muted">
+          Both surfaces pick up an <span className="mono text-renge-sm">aria.config.&#123;ts,js,json&#125;</span>{' '}
           if present, but require none. Declaring a component’s semantics graduates its diagnostics
           from inferred suggestion to declared auto-fix — the line between guess and known moves in
           your favor as your design system declares more.
         </p>
-        <div className="mt-5">
+        <div className="mt-renge-4">
           <CodeBlock label="aria.config.ts" code={CONFIG_BRIDGE} />
         </div>
       </section>
 
       {/* Version note */}
-      <section aria-labelledby="version" className="mt-12">
+      <section aria-labelledby="version" className="mt-renge-6">
         <h2 id="version" className="sr-only">
           Version note
         </h2>
-        <div className="rounded-lg border border-[var(--color-guess-line)] bg-[var(--color-guess-soft)]/60 px-5 py-4">
-          <p className="text-sm leading-relaxed text-[var(--color-guess-ink)]">
+        <div className="rounded-renge-2 border border-renge-warning bg-renge-warning-subtle px-renge-4 py-renge-3">
+          <p className="text-renge-sm leading-relaxed text-[var(--gate-guess-ink)]">
             <strong>Version note:</strong> start at <span className="mono">0.1.1</span>.{' '}
             <span className="mono">0.1.0</span> exists in npm’s history but was broken for
             installers (a packaging bug — its manifest pointed at unshipped src); it’s fixed in
