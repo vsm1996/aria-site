@@ -65,7 +65,9 @@ export default function GetStartedPage() {
         <p className="mt-renge-4 text-renge-sm leading-relaxed text-renge-fg-subtle">
           The recommended config sets the three format-tier rules to{' '}
           <span className="mono">error</span> — that’s the CI gate — and the five lint-tier rules
-          to <span className="mono">warn</span>.
+          to <span className="mono">warn</span>. Note: installing the package doesn’t wire it in —
+          you have to add it to your <span className="mono">eslint.config.js</span> as above, which
+          is a separate step from running the standalone CLI below.
         </p>
       </section>
 
