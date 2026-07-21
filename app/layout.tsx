@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   },
   description:
     'Aria holds itself to the contract that made code formatters non-optional: it never changes what the code means. Meaning-preserving ARIA fixes that run on save and gate CI, plus lint-tier checks a human approves.',
-  metadataBase: new URL('https://aria-a11y.dev'),
+  metadataBase: new URL('https://aria-formatter.vercel.app'),
   openGraph: {
     title: 'Aria — the accessibility formatter',
     description:
