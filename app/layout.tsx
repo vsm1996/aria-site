@@ -43,11 +43,20 @@ export const metadata: Metadata = {
   },
 };
 
+// Set the saved theme before first paint, so there's no flash of the wrong
+// mode. Only applies an explicit choice; with none, Renge's tokens follow the
+// OS `prefers-color-scheme` on their own. Kept tiny and dependency-free.
+const noFlashThemeScript = `(function(){try{var m=localStorage.getItem('aria-theme');if(m==='dark'||m==='light'){document.documentElement.setAttribute('data-mode',m);}}catch(e){}})();`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    // Renge profile "ocean", mode pinned to light — dark is a deliberate
-    // follow-up (contrast on the gate inks is only audited for light).
-    <html lang="en" data-profile="ocean" data-mode="light">
+    // Renge profile "ocean". No data-mode here on purpose: the site follows the
+    // OS preference until the user picks one via the nav toggle (which sets
+    // data-mode + localStorage; the head script re-applies it before paint).
+    <html lang="en" data-profile="ocean" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: noFlashThemeScript }} />
+      </head>
       <body className="flex min-h-screen flex-col">
         <a
           href="#main"

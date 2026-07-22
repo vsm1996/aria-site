@@ -4,25 +4,59 @@
 /*
   Aria site on the Renge design system (@renge-ui/tailwind v4 plugin):
   Fibonacci spacing (--renge-space-*), φ typography (--renge-font-size-*),
-  radius, duration/easing, and the 22 semantic colors — profile "ocean",
-  mode pinned to light (dark is a deliberate follow-up, not shipped unaudited).
+  radius, duration/easing, and the 22 semantic colors — profile "ocean".
+  Light and dark: Renge ships both Ocean modes; the site follows the OS
+  preference by default and lets the user override via the nav toggle
+  (data-mode on <html>, persisted; a no-FOUC script sets it before paint).
 
-  THE GATE COLORS (do not blur these):
+  THE GATE COLORS (do not blur these, in either mode):
   The site's two functional colors carry the same meaning as Aria's gate —
     known (native/declared basis → auto-fix)   = Renge `success`
     guess (inferred basis → suggestion only)   = Renge `warning`
   This is Path 1: Renge's own semantic status tokens preserve the safe/guess
-  split (green hue 130 vs amber hue 40 — 90° apart in OKLCH, immediately
-  legible). The two --gate-*-ink shades below are the one thin derivation:
-  darker text tones hue-locked to those same tokens, needed for AA contrast
-  on the -subtle fills (warning at 62% L is not readable as small text on a
-  92% L background; these are).
+  split (a wide OKLCH hue gap — green vs amber — in both modes). The
+  --gate-*-ink shades below are the one thin derivation: text tones for the
+  `-subtle` fills, needed for AA contrast (the raw success/warning tokens are
+  too close in lightness to their subtle backgrounds to read as small text).
+  They are THEMED: dark inks on the light-mode subtle fills, light inks on the
+  dark-mode subtle fills — otherwise dark ink on a dark fill would vanish.
 */
 :root {
-  --gate-known-ink: oklch(34% 0.11 130); /* derived from --renge-color-success (hue 130) */
-  --gate-guess-ink: oklch(38% 0.12 40); /* derived from --renge-color-warning (hue 40) */
+  --gate-known-ink: oklch(34% 0.11 130); /* dark green — for light-mode success-subtle */
+  --gate-guess-ink: oklch(38% 0.12 40); /* dark amber — for light-mode warning-subtle */
   --font-mono-stack: 'JetBrains Mono', ui-monospace, 'SF Mono', 'Menlo', 'Consolas', monospace;
   color-scheme: light;
+}
+
+/* Dark mode: the subtle fills flip dark, so the inks flip light. Hues track
+   Renge's dark success (≈170) / warning (≈52). Explicit override wins; system
+   preference applies unless the user forced light. */
+[data-mode='dark'] {
+  --gate-known-ink: oklch(85% 0.13 168);
+  --gate-guess-ink: oklch(84% 0.14 60);
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-mode='light']) {
+    --gate-known-ink: oklch(85% 0.13 168);
+    --gate-guess-ink: oklch(84% 0.14 60);
+    color-scheme: dark;
+  }
+}
+
+/* Accessibility override: Renge's dark `fg-muted` (54% L) lands at ~3.4:1 on
+   the dark surfaces — below WCAG AA (4.5) for body text, and the site uses
+   `text-renge-fg-muted` for a lot of prose. Bump it to 64% L (min 5.15:1 across
+   bg / bg-subtle / success-subtle / warning-subtle), still clearly dimmer than
+   `fg`. Light mode already passes (≥5.1:1), so it is left untouched. Scoped to
+   Renge's own ocean-dark selectors so it reliably wins the cascade. */
+[data-profile='ocean'][data-mode='dark'] {
+  --renge-color-fg-muted: oklch(64% 0.05 210);
+}
+@media (prefers-color-scheme: dark) {
+  [data-profile='ocean']:not([data-mode='light']) {
+    --renge-color-fg-muted: oklch(64% 0.05 210);
+  }
 }
 
 html {

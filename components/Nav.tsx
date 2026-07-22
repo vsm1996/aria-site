@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { ThemeToggle } from './ThemeToggle';
 
 const links = [
   { href: '/demo', label: 'Demo' },
@@ -61,10 +62,12 @@ export function Nav() {
 
           <a
             href="https://github.com/vsm1996/aria"
-            className="rounded-renge-1 border border-renge-border px-renge-3 py-renge-1 text-renge-sm font-medium text-renge-fg transition-colors duration-renge-2 ease-renge-ease-out hover:bg-renge-bg-inverse hover:text-renge-fg-inverse"
+            className="hidden rounded-renge-1 border border-renge-border px-renge-3 py-renge-1 text-renge-sm font-medium text-renge-fg transition-colors duration-renge-2 ease-renge-ease-out hover:bg-renge-bg-inverse hover:text-renge-fg-inverse sm:inline-block"
           >
             GitHub
           </a>
+
+          <ThemeToggle />
 
           {/* Mobile toggle — below sm only */}
           <button
@@ -121,6 +124,14 @@ export function Nav() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <a
+                  href="https://github.com/vsm1996/aria"
+                  className="block rounded-renge-1 px-renge-3 py-renge-2 text-renge-base text-renge-fg-muted transition-colors duration-renge-2 ease-renge-ease-out hover:bg-renge-bg-subtle hover:text-renge-fg"
+                >
+                  GitHub
+                </a>
+              </li>
             </ul>
           </nav>
         </div>
