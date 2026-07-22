@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint:a11y": "npx @aria-a11y/cli check app components",
+    "audit:wcag": "node scripts/wcag-audit.mjs",
     "gen:rules": "node scripts/gen-rules.mjs"
   },
   "dependencies": {
@@ -19,6 +20,7 @@
     "react-dom": "^19.2.8"
   },
   "devDependencies": {
+    "@renge-ui/test-utils": "^1.0.2",
     "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^26.1.1",
     "@types/react": "^19.2.17",

@@ -15,6 +15,13 @@ docs/rule-registry.md — nothing invented or approximated:
   `@aria-a11y/cli@0.1.1` against those exact snippets — not hand-typed.
 - `npm run lint:a11y` runs the published Aria CLI against this site's own JSX;
   the footer's "checked by Aria — zero findings" claim is verified by it.
+- `npm run audit:wcag` checks the WCAG AA contrast of every real
+  foreground/background pair in both light and dark modes. It runs the design
+  system's own `@renge-ui/test-utils` validator alongside a self-checked
+  reference computation (black/white must equal 21.00). All pairs pass;
+  `@renge-ui/test-utils` currently disagrees on every pair because of an
+  OKLCH→luminance bug (flagged for a fix there — see the script header), so the
+  verdict uses the reference engine.
 
 ## Develop
 
