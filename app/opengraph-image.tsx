@@ -2,9 +2,10 @@ import { ImageResponse } from 'next/og';
 
 // Code-generated OG image (1200×630) — no binary asset to drift. Colours are the
 // site's real Ocean-profile tokens, converted OKLCH→hex (Satori's oklch support
-// is version-dependent, so hex is used for fidelity). The gate motif is the
-// brand: green = native/declared → auto-fix, amber = inferred → suggestion.
-// Next wires this into <meta og:image> automatically; twitter-image re-exports it.
+// is version-dependent, so hex is used for fidelity). Deliberately spare: one
+// focal line (the core hero statement), a light gate legend, and the domain.
+// The title/description already show in the share card, so the image doesn't
+// repeat them. Next wires this into <meta og:image>; twitter-image re-exports it.
 
 export const alt =
   'Aria — the accessibility formatter. It never changes what the code means.';
@@ -16,46 +17,14 @@ const INK = '#0b191b';
 const FG_MUTED = '#3d5e64';
 const BORDER = '#d7e0e2';
 const KNOWN = '#397600';
-const KNOWN_SOFT = '#d3f0b8';
-const KNOWN_INK = '#244200';
 const GUESS = '#e34b00';
-const GUESS_SOFT = '#ffd3bd';
-const GUESS_INK = '#742400';
 
-function Chip({
-  label,
-  arrow,
-  outcome,
-  soft,
-  ink,
-  edge,
-}: {
-  label: string;
-  arrow: string;
-  outcome: string;
-  soft: string;
-  ink: string;
-  edge: string;
-}) {
+function LegendItem({ color, term, outcome }: { color: string; term: string; outcome: string }) {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          padding: '10px 22px',
-          borderRadius: 999,
-          background: soft,
-          border: `2px solid ${edge}`,
-          color: ink,
-          fontSize: 30,
-          fontWeight: 600,
-        }}
-      >
-        {label}
-      </div>
-      <div style={{ display: 'flex', color: FG_MUTED, fontSize: 30 }}>{arrow}</div>
-      <div style={{ display: 'flex', color: ink, fontSize: 30, fontWeight: 600 }}>{outcome}</div>
+    <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 27 }}>
+      <div style={{ display: 'flex', width: 16, height: 16, borderRadius: 999, background: color }} />
+      <div style={{ display: 'flex', color: INK, fontWeight: 600 }}>{term}</div>
+      <div style={{ display: 'flex', color: FG_MUTED }}>→ {outcome}</div>
     </div>
   );
 }
@@ -72,7 +41,7 @@ export default function OpengraphImage() {
           justifyContent: 'space-between',
           background: PAPER,
           color: INK,
-          padding: '68px 76px',
+          padding: '76px 84px',
           fontFamily: 'sans-serif',
         }}
       >
@@ -92,8 +61,8 @@ export default function OpengraphImage() {
         </div>
 
         {/* wordmark */}
-        <div style={{ display: 'flex', alignItems: 'baseline', gap: 22 }}>
-          <div style={{ display: 'flex', fontSize: 50, fontWeight: 700, letterSpacing: -1 }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 20 }}>
+          <div style={{ display: 'flex', fontSize: 44, fontWeight: 700, letterSpacing: -1 }}>
             Aria
           </div>
           <div style={{ display: 'flex', fontSize: 27, color: FG_MUTED }}>
@@ -101,61 +70,33 @@ export default function OpengraphImage() {
           </div>
         </div>
 
-        {/* headline — the core line, the star of the site hero */}
-        <div style={{ display: 'flex', flexDirection: 'column', maxWidth: 1000 }}>
-          <div style={{ display: 'flex', fontSize: 30, color: FG_MUTED, marginBottom: 14 }}>
-            Accessibility that runs on save and gates CI —
-          </div>
-          <div
-            style={{
-              display: 'flex',
-              fontSize: 88,
-              fontWeight: 700,
-              lineHeight: 1.02,
-              letterSpacing: -3,
-              color: KNOWN,
-            }}
-          >
-            it never changes what the code means.
-          </div>
-        </div>
-
-        {/* the gate, condensed */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-          <Chip
-            label="native · declared"
-            arrow="→"
-            outcome="auto-fix, gates CI"
-            soft={KNOWN_SOFT}
-            ink={KNOWN_INK}
-            edge={KNOWN}
-          />
-          <Chip
-            label="inferred"
-            arrow="→"
-            outcome="suggestion, a human approves"
-            soft={GUESS_SOFT}
-            ink={GUESS_INK}
-            edge={GUESS}
-          />
-        </div>
-
-        {/* footer */}
+        {/* the one focal line */}
         <div
           style={{
             display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            borderTop: `2px solid ${BORDER}`,
-            paddingTop: 26,
-            fontSize: 27,
-            color: FG_MUTED,
+            fontSize: 92,
+            fontWeight: 700,
+            lineHeight: 1.0,
+            letterSpacing: -3,
+            color: KNOWN,
+            maxWidth: 980,
           }}
         >
-          <div style={{ display: 'flex' }}>eslint-plugin-aria-a11y · @aria-a11y/cli</div>
-          <div style={{ display: 'flex', fontWeight: 600, color: INK }}>
-            aria-formatter.vercel.app
-          </div>
+          It never changes what the code means.
+        </div>
+
+        {/* light gate legend — the whole idea, at a glance */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 52,
+            borderTop: `2px solid ${BORDER}`,
+            paddingTop: 30,
+          }}
+        >
+          <LegendItem color={KNOWN} term="native · declared" outcome="auto-fix" />
+          <LegendItem color={GUESS} term="inferred" outcome="suggestion" />
         </div>
       </div>
     ),
