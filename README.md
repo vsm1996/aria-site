@@ -18,10 +18,11 @@ docs/rule-registry.md — nothing invented or approximated:
 - `npm run audit:wcag` checks the WCAG AA contrast of every real
   foreground/background pair in both light and dark modes. It runs the design
   system's own `@renge-ui/test-utils` validator alongside a self-checked
-  reference computation (black/white must equal 21.00). All pairs pass;
-  `@renge-ui/test-utils` currently disagrees on every pair because of an
-  OKLCH→luminance bug (flagged for a fix there — see the script header), so the
-  verdict uses the reference engine.
+  reference computation (black/white must equal 21.00). All pairs pass, and as
+  of `@renge-ui/test-utils` 1.1.0 the two engines agree on every pair (an
+  earlier OKLCH→luminance bug, fixed upstream, is described in the script
+  header). Keeping both engines means any future regression shows up as a
+  per-pair disagreement rather than a silent wrong number.
 
 ## Develop
 

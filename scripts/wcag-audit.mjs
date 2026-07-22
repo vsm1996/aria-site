@@ -8,13 +8,13 @@
 //   2. @renge-ui/test-utils · validateContrastRatio — the design system's own
 //      validator, run per the request to exercise it.
 //
-// The verdict uses engine 1. Engine 2 is reported alongside because it is
-// currently UNRELIABLE: its OKLCH→luminance conversion is only correct at the
-// 0%/100% lightness extremes and badly mis-estimates mid/high lightness (e.g.
-// it scores mid-gray oklch(50%) vs white at 16.3:1 when the true value is
-// ~4.0, and muted-on-dark at 2.24:1 when the true value is 5.98). It therefore
-// emits both false failures (dark backgrounds) and false passes (mid-tone
-// backgrounds). Flagged for a fix in @renge-ui/test-utils; do not gate on it.
+// The verdict uses engine 1. Engine 2 is reported alongside and, as of
+// @renge-ui/test-utils 1.1.0, now AGREES with it on every pair. (Through
+// 1.0.2 it had an OKLCH→luminance bug — a double sRGB linearization that was
+// only correct at the 0%/100% extremes and badly mis-estimated the midrange,
+// emitting false failures on dark backgrounds and false passes on mid-tones.
+// Fixed upstream; this script keeps both engines so any future regression
+// surfaces as a per-pair disagreement rather than a silent wrong number.)
 
 import { validateContrastRatio } from '@renge-ui/test-utils';
 
