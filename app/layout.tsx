@@ -11,11 +11,35 @@ export const metadata: Metadata = {
   description:
     'Aria holds itself to the contract that made code formatters non-optional: it never changes what the code means. Meaning-preserving ARIA fixes that run on save and gate CI, plus lint-tier checks a human approves.',
   metadataBase: new URL('https://aria-formatter.vercel.app'),
+  applicationName: 'Aria',
+  keywords: [
+    'accessibility',
+    'a11y',
+    'ARIA',
+    'ESLint',
+    'oxlint',
+    'formatter',
+    'linter',
+    'WCAG',
+    'jsx-a11y',
+  ],
+  // og:image and twitter:image are supplied by the file conventions
+  // (app/opengraph-image.tsx and app/twitter-image.tsx) — Next wires them in
+  // automatically with the correct dimensions and alt text.
   openGraph: {
     title: 'Aria — the accessibility formatter',
     description:
       'Meaning-preserving accessibility fixes that run on save and gate CI. Everything that would require a guess stays out of the automatic path, by construction.',
+    url: 'https://aria-formatter.vercel.app',
+    siteName: 'Aria',
+    locale: 'en_US',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Aria — the accessibility formatter',
+    description:
+      'Meaning-preserving accessibility fixes that run on save and gate CI. Everything that would require a guess stays out of the automatic path, by construction.',
   },
 };
 

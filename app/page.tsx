@@ -69,7 +69,7 @@ export default function Home() {
 
       {/* Why this contract */}
       <section className="border-b border-renge-border-subtle">
-        <div className="container-tight grid gap-renge-10 py-renge-6 sm:py-renge-7 md:grid-cols-2">
+        <div className="container-tight grid gap-renge-6 py-renge-6 sm:py-renge-7 md:grid-cols-2 md:items-start">
           <div>
             <p className="eyebrow">Why a formatter, not another linter</p>
             <h2 className="mt-renge-3 text-renge-lg font-semibold tracking-tight">
