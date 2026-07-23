@@ -21,7 +21,10 @@ import { defineConfig } from '@aria/config';
 
 export default defineConfig({
   componentSemantics: {
-    IconButton: { role: 'button' },
+    // renders a native <button>: declared so the name checks understand it
+    IconButton:  { role: 'button', requiresName: true, nameProp: 'aria-label' },
+    // renders a <div> that needs the role at runtime: opt into injection
+    MenuButton:  { role: 'button', injectRole: true },
   },
 });`;
 
@@ -186,11 +189,16 @@ export default function ArchitecturePage() {
         <div className="mt-renge-4 grid items-start gap-renge-4 md:grid-cols-2">
           <div className="prose-measure space-y-renge-4 text-renge-base leading-relaxed text-renge-fg-muted">
             <p>
-              The boundary between guess and known isn’t fixed — config is the lever. When a design
-              system declares that <span className="mono text-renge-sm">IconButton</span> is a button,
-              the engine stops guessing: the same diagnostic that was an inferred-basis suggestion
-              becomes a <span className="mono text-renge-sm">declared</span>-basis auto-fix. Proven by a
-              named end-to-end test in the repo, not asserted.
+              The boundary between guess and known isn’t fixed — config is the lever. Declare a
+              component’s semantics and the engine stops guessing: its diagnostics move from{' '}
+              <span className="mono text-renge-sm">inferred</span> to{' '}
+              <span className="mono text-renge-sm">declared</span> basis. The declared{' '}
+              <span className="mono text-renge-sm">role</span> is descriptive — it lets the name
+              checks understand the component. Role <em>injection</em> is a separate opt-in
+              (<span className="mono text-renge-sm">injectRole</span>), for a component that renders a
+              non-semantic element and genuinely needs the role: that’s what graduates an inferred
+              suggestion to a real declared-basis auto-fix. Proven by named end-to-end tests in the
+              repo, not asserted.
             </p>
             <p className="text-renge-sm text-renge-fg-subtle">
               Declared basis doesn’t force a fix, either — a declared image component missing its

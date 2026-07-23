@@ -21,7 +21,7 @@ export interface Rule {
   note: string;
 }
 
-export const REGISTRY_VERSION = '0.1.1';
+export const REGISTRY_VERSION = '0.2.0';
 export const REGISTRY_URL =
   'https://github.com/vsm1996/aria/blob/main/docs/rule-registry.md';
 
@@ -67,7 +67,7 @@ export const rules: Rule[] = [
     spec: 'WCAG 2.1 SC 4.1.2 — UI components must have a role. Non-semantic elements with event handlers need one.',
     summary:
       'Flags a generic element (div, span) with a click handler and no role, then inspects its children to decide what to say.',
-    note: 'A button-like element gets a role="button" suggestion; an ambiguous one is report-only. Every intrinsic diagnostic is inferred basis, so the gate keeps it a suggestion — until config declares the component, when it graduates to a real auto-fix.',
+    note: 'A button-like element gets a role="button" suggestion; an ambiguous one is report-only. Every intrinsic diagnostic is inferred basis, so the gate keeps it a suggestion — until config declares the component with injectRole, when it graduates to a real auto-fix.',
   },
   {
     id: 'control-needs-name',

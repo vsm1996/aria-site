@@ -1,4 +1,4 @@
-// Real output captured from the published @aria-a11y/cli@0.1.1 running against
+// Real output captured from the published @aria-a11y/cli@0.2.0 running against
 // these exact snippets — not hand-typed to look plausible. `after` is the true
 // `aria fix` result; `diagnostic` is the true `aria check` message; `applied`
 // reflects whether the fix actually changed the file. Static by design: zero

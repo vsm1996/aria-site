@@ -17,7 +17,7 @@ export default function DemoPage() {
       </h1>
       <p className="prose-measure mt-renge-4 text-renge-base leading-relaxed text-renge-fg-muted">
         Every example below is real output captured from the published{' '}
-        <span className="mono text-renge-sm">@aria-a11y/cli@0.1.1</span> running against these exact
+        <span className="mono text-renge-sm">@aria-a11y/cli@0.2.0</span> running against these exact
         snippets — the diagnostics and the fixed code are verbatim, not hand-typed to look
         plausible. It’s static on purpose: a live in-browser approximation could drift from the
         CI-verified rule behaviour, and for a tool whose whole claim is “provably identical

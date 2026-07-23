@@ -4,7 +4,7 @@ import { CodeBlock } from '@/components/CodeBlock';
 export const metadata: Metadata = {
   title: 'Get started',
   description:
-    'Install eslint-plugin-aria-a11y or run the zero-config @aria-a11y/cli. Real, verified commands — both packages live on npm at 0.1.1.',
+    'Install eslint-plugin-aria-a11y or run the zero-config @aria-a11y/cli. Real, verified commands — both packages live on npm at 0.2.0.',
 };
 
 const INSTALL_PLUGIN = 'npm install --save-dev eslint eslint-plugin-aria-a11y';
@@ -25,7 +25,10 @@ import { defineConfig } from '@aria/config';
 
 export default defineConfig({
   componentSemantics: {
-    IconButton: { role: 'button' },
+    // native <button>: declared so name checks understand it
+    IconButton:  { role: 'button', requiresName: true, nameProp: 'aria-label' },
+    // <div> that needs a role: opt into injection
+    MenuButton:  { role: 'button', injectRole: true },
   },
 });`;
 
@@ -37,7 +40,7 @@ export default function GetStartedPage() {
         Two surfaces, one rule set.
       </h1>
       <p className="prose-measure mt-renge-4 text-renge-base leading-relaxed text-renge-fg-muted">
-        Both packages are live on npm at <span className="mono text-renge-sm">0.1.1</span>. The plugin
+        Both packages are live on npm at <span className="mono text-renge-sm">0.2.0</span>. The plugin
         and the CLI run the exact same rule modules — output is identical by construction, and a
         parity test in the repo asserts it.
       </p>
@@ -98,9 +101,11 @@ export default function GetStartedPage() {
         </h2>
         <p className="prose-measure mt-renge-3 text-renge-base leading-relaxed text-renge-fg-muted">
           Both surfaces pick up an <span className="mono text-renge-sm">aria.config.&#123;ts,js,json&#125;</span>{' '}
-          if present, but require none. Declaring a component’s semantics graduates its diagnostics
-          from inferred suggestion to declared auto-fix — the line between guess and known moves in
-          your favor as your design system declares more.
+          if present, but require none. Declaring a component’s semantics turns Aria’s guesses into
+          ground truth — diagnostics move from inferred to declared basis, and for a component that
+          renders a non-semantic element, opting in with <span className="mono text-renge-sm">injectRole</span>{' '}
+          graduates a suggestion to a real auto-fix. The line between guess and known moves in your
+          favor as your design system declares more.
         </p>
         <div className="mt-renge-4">
           <CodeBlock label="aria.config.ts" code={CONFIG_BRIDGE} />
@@ -114,10 +119,12 @@ export default function GetStartedPage() {
         </h2>
         <div className="rounded-renge-2 border border-renge-warning bg-renge-warning-subtle px-renge-4 py-renge-3">
           <p className="text-renge-sm leading-relaxed text-[var(--gate-guess-ink)]">
-            <strong>Version note:</strong> start at <span className="mono">0.1.1</span>.{' '}
-            <span className="mono">0.1.0</span> exists in npm’s history but was broken for
-            installers (a packaging bug — its manifest pointed at unshipped src); it’s fixed in
-            0.1.1 and guarded by a real install-and-import CI check. Details in the repo’s{' '}
+            <strong>Version note:</strong> latest is <span className="mono">0.2.0</span>; anything{' '}
+            <span className="mono">0.1.1</span>+ is safe. Avoid only <span className="mono">0.1.0</span>{' '}
+            — it exists in npm’s history but was broken for installers (a packaging bug — its manifest
+            pointed at unshipped src); fixed in 0.1.1 and guarded by a real install-and-import CI
+            check. 0.2.0 makes role injection opt-in (<span className="mono">injectRole</span>);
+            details in the repo’s{' '}
             <a
               href="https://github.com/vsm1996/aria/blob/main/CHANGELOG.md"
               className="underline underline-offset-4"

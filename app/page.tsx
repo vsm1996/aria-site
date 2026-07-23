@@ -11,7 +11,7 @@ export default function Home() {
       {/* Hero */}
       <section className="border-b border-renge-border-subtle">
         <div className="container-tight py-renge-7 sm:py-renge-7">
-          <p className="eyebrow">eslint-plugin-aria-a11y · @aria-a11y/cli · v0.1.1 on npm</p>
+          <p className="eyebrow">eslint-plugin-aria-a11y · @aria-a11y/cli · v0.2.0 on npm</p>
           <h1 className="mt-renge-4 max-w-3xl text-renge-xl font-semibold leading-[1.08] tracking-tight text-renge-fg">
             The accessibility formatter.
             <br />
@@ -106,7 +106,7 @@ export default function Home() {
           </h2>
           <p className="prose-measure mt-renge-4 text-renge-base leading-relaxed text-renge-fg-muted">
             Three format-tier rules gate CI with auto-fixes; five lint-tier rules surface located,
-            human-reviewed diagnostics. Both packages are live on npm at 0.1.1, with ESLint ↔
+            human-reviewed diagnostics. Both packages are live on npm at 0.2.0, with ESLint ↔
             oxlint parity verified on every commit — zero drift across every fixture.
           </p>
           <div className="mt-renge-5 grid gap-renge-4 sm:grid-cols-2">
