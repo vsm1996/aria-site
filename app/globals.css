@@ -44,20 +44,10 @@
   }
 }
 
-/* Accessibility override: Renge's dark `fg-muted` (54% L) lands at ~3.4:1 on
-   the dark surfaces — below WCAG AA (4.5) for body text, and the site uses
-   `text-renge-fg-muted` for a lot of prose. Bump it to 64% L (min 5.15:1 across
-   bg / bg-subtle / success-subtle / warning-subtle), still clearly dimmer than
-   `fg`. Light mode already passes (≥5.1:1), so it is left untouched. Scoped to
-   Renge's own ocean-dark selectors so it reliably wins the cascade. */
-[data-profile='ocean'][data-mode='dark'] {
-  --renge-color-fg-muted: oklch(64% 0.05 210);
-}
-@media (prefers-color-scheme: dark) {
-  [data-profile='ocean']:not([data-mode='light']) {
-    --renge-color-fg-muted: oklch(64% 0.05 210);
-  }
-}
+/* (The dark `fg-muted` AA override that lived here is gone as of
+   @renge-ui/tokens 2.7.3, which fixed the token at the source — dark `fg-muted`
+   now meets WCAG AA on bg/bg-subtle across every profile. Verified by
+   `npm run audit:wcag`.) */
 
 html {
   -webkit-text-size-adjust: 100%;

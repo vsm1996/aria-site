@@ -75,7 +75,7 @@ const T = {
   },
   dark: {
     bg: 'oklch(14% 0.08 205)', bgSubtle: 'oklch(20% 0.10 205)', bgInverse: 'oklch(93% 0.02 210)',
-    fg: 'oklch(92% 0.02 205)', fgMuted: 'oklch(64% 0.05 210)', fgSubtle: 'oklch(76% 0.04 205)',
+    fg: 'oklch(92% 0.02 205)', fgMuted: 'oklch(62% 0.06 210)', fgSubtle: 'oklch(76% 0.04 205)',
     fgInverse: 'oklch(14% 0.08 205)', success: 'oklch(80% 0.1 170)', successSubtle: 'oklch(20% 0.10 170)',
     warning: 'oklch(78% 0.14 52)', warningSubtle: 'oklch(22% 0.08 52)',
     gateKnownInk: 'oklch(85% 0.13 168)', gateGuessInk: 'oklch(84% 0.14 60)',
