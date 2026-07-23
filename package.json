@@ -12,9 +12,9 @@
     "gen:rules": "node scripts/gen-rules.mjs"
   },
   "dependencies": {
-    "@renge-ui/react": "^3.8.0",
-    "@renge-ui/tailwind": "^2.10.0",
-    "@renge-ui/tokens": "^2.7.3",
+    "@renge-ui/react": "^3.9.0",
+    "@renge-ui/tailwind": "^2.12.0",
+    "@renge-ui/tokens": "^2.8.1",
     "next": "^16.2.11",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"

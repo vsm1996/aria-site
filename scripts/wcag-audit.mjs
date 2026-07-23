@@ -70,7 +70,7 @@ const T = {
     bg: 'oklch(99% 0.01 210)', bgSubtle: 'oklch(93% 0.02 210)', bgInverse: 'oklch(50% 0.08 210)',
     fg: 'oklch(20% 0.02 210)', fgMuted: 'oklch(46% 0.04 210)', fgSubtle: 'oklch(35% 0.03 210)',
     fgInverse: 'oklch(99% 0.01 210)', success: 'oklch(50% 0.2 130)', successSubtle: 'oklch(92% 0.08 130)',
-    warning: 'oklch(62% 0.2 40)', warningSubtle: 'oklch(92% 0.08 40)',
+    warning: 'oklch(55% 0.2 40)', warningSubtle: 'oklch(92% 0.08 40)',
     gateKnownInk: 'oklch(34% 0.11 130)', gateGuessInk: 'oklch(38% 0.12 40)',
   },
   dark: {
